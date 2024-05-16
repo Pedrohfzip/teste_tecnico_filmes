@@ -1,12 +1,12 @@
 const Router = require("express");
 const HttpStatus = require("http-status-codes");
 const router = Router();
-const userController = require("../controllers/Movie");
+const movieController = require("../controllers/Movie");
 
 //ROTAS
 
 //Todos os filmes
-router.get("/", userController.getAll);
-router.post("/movie", userController.create);
+router.get("/", movieController.getAll);
+router.post("/movie", movieController.create);
 
 module.exports = router;

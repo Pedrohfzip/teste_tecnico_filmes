@@ -1,7 +1,7 @@
 const { authCreateMovie } = require("../middleware/CreateMovie");
 const database = require("../services/database");
 const HttpStatus = require("http-status-codes");
-
+const movies = [];
 const create = async (req, res) => {
   try {
     const movie = {
@@ -20,10 +20,16 @@ const create = async (req, res) => {
 
 const getAll = async (req, res) => {
   try {
-    const result = await database.pool.query(
+    const data = await database.pool.query(
       "SELECT title, release_year, available FROM movies"
     );
-    return res.send(result.rows).json();
+
+    const arr = data.rows.map((movie) => {
+      return movie;
+    });
+    console.log(arr);
+
+    return res.send(arr);
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }
