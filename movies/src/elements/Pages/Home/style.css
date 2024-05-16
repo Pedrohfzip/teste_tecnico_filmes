@@ -1,0 +1,15 @@
+.home {
+  padding: 20px 20px;
+  margin: 0;
+  border: 1px solid black;
+}
+.firstMovies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
+}
+
+.cardMovies {
+  display: flex;
+}

@@ -1,0 +1,25 @@
+.Header {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.nav ul {
+  list-style: none;
+}
+.nav ul li a {
+  font-size: 20px;
+  color: black;
+  text-decoration: none;
+  padding: 0px 20px;
+  cursor: pointer;
+  border-radius: 2px;
+}
+.nav ul li a:hover {
+  background-color: black;
+  color: white;
+}
