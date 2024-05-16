@@ -1,15 +1,15 @@
-.home {
+.actor {
   padding: 20px 20px;
   margin: 0;
-  /* border: 1px solid black; */
+  border: 1px solid black;
 }
 .firstMovies {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 4rem;
   width: 100%;
 }
 
-.cardMovies {
+.cardActor {
   display: flex;
 }
