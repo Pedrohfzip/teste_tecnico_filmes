@@ -15,8 +15,10 @@ SIGA TODOS OS PASSOS !
 - ![image](https://github.com/Pedrohfzip/teste_tecnico_filmes/assets/82663313/93775a09-eeff-46d2-93a7-ff11ba4a5259)
         
 - Clique com o mouse direito em no schema public e abra o Query Tool
+  
 - ![image](https://github.com/Pedrohfzip/teste_tecnico_filmes/assets/82663313/63fed7b6-cc60-42fa-8e0b-e1c0414e40b0)
 
+```
       -Entao execute estes SQL´s: 
         CREATE TABLE IF NOT EXISTS movies (
           id SERIAL PRIMARY KEY,
@@ -36,7 +38,7 @@ SIGA TODOS OS PASSOS !
           movie_id INTEGER REFERENCES movies(id) ON DELETE CASCADE,
           actor_id INTEGER REFERENCES actors(id) ON DELETE CASCADE
       );
-
+```
 
     
   1 ° - Despois de clonar o repositório abra 2 terminais na pasta do projeto 
