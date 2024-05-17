@@ -11,10 +11,8 @@ SIGA TODOS OS PASSOS !
       
       
 - Criar um banco de dados com o nome dev
-```
-<img src="caminho_para_sua_imagem" alt="Descrição da imagem" width="300" height="200">
+
 - ![image](https://github.com/Pedrohfzip/teste_tecnico_filmes/assets/82663313/93775a09-eeff-46d2-93a7-ff11ba4a5259)
-```
         
 - Clique com o mouse direito em no schema public e abra o Query Tool
 - ![image](https://github.com/Pedrohfzip/teste_tecnico_filmes/assets/82663313/63fed7b6-cc60-42fa-8e0b-e1c0414e40b0)
