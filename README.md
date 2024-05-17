@@ -39,7 +39,7 @@ SIGA TODOS OS PASSOS !
           actor_id INTEGER REFERENCES actors(id) ON DELETE CASCADE
       );
 ```
-
+  - Banco de dados Configurado
     
   1 ° - Despois de clonar o repositório abra 2 terminais na pasta do projeto 
   2° - Em um terminal execute " npm run start ", para iniciar o React
