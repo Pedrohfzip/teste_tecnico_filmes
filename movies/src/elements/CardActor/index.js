@@ -4,7 +4,6 @@ import React, { useState } from "react";
 
 import axios from "axios";
 function CardActor({ props }) {
-  const birth = new Date(props.date_birth);
   const [modalOpen, setModalOpen] = useState(false);
 
   const openModal = () => {
@@ -70,6 +69,7 @@ function CardActor({ props }) {
           </li>
         </ul>
       </div>
+
       {modalOpen && (
         <div className="modal-overlay">
           <div className="modal">
@@ -109,9 +109,13 @@ function CardActor({ props }) {
                   <option value="CHINA">CHINA</option>
                 </select>
               </div>
-              <button type="submit">Editar</button>
-              <button onClick={remove}>Excluir</button>
-              <button type="button" onClick={closeModal}>
+              <button className="btnForm" type="submit">
+                Editar
+              </button>
+              <button className="btnForm" onClick={remove}>
+                Excluir
+              </button>
+              <button className="btnForm" type="button" onClick={closeModal}>
                 Cancelar
               </button>
             </form>

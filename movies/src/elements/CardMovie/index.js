@@ -111,9 +111,13 @@ function CardMovie({ props }) {
                   <option value={false}>Indisponível</option>
                 </select>
               </div>
-              <button type="submit">Editar</button>
-              <button onClick={remove}>Excluir</button>
-              <button type="button" onClick={closeModal}>
+              <button className="btnForm" type="submit">
+                Editar
+              </button>
+              <button className="btnForm" onClick={remove}>
+                Excluir
+              </button>
+              <button className="btnForm" type="button" onClick={closeModal}>
                 Cancelar
               </button>
             </form>

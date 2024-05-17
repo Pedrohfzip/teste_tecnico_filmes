@@ -71,7 +71,21 @@ select {
 }
 
 .btnCreate {
-  padding: 10px;
-  font-size: 20px;
-  margin-bottom: 5rem;
+  font-size: 30px;
+  text-decoration: none;
+}
+.btnCreate Link {
+  font-size: 30px;
+  text-decoration: none;
+}
+.modal-overlay .btnForm {
+  padding: 10px 20px;
+  margin-top: 1rem;
+  margin-right: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
 }

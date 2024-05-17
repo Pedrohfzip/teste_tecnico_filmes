@@ -1,21 +1,43 @@
 .cardActor {
-  border: 1px solid black;
-  width: 200px;
-  height: 80px;
-  display: flex;
-  flex-direction: column; /* Alterado para coluna para empilhar os elementos verticalmente */
-  justify-content: space-between;
+  border: 1px solid #ddd; /* Alterei a cor da borda para um cinza mais suave */
+  width: 250px; /* Aumentei um pouco a largura */
+  max-width: 100%; /* Garante que não ultrapasse a largura do contêiner pai */
+  height: auto; /* Ajustei a altura automaticamente ao conteúdo */
+  padding: 10px; /* Adicionei um espaçamento interno */
+  border-radius: 8px; /* Adicionei bordas arredondadas */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adicionei uma sombra suave */
+  margin-bottom: 20px; /* Espaçamento inferior entre os cartões */
 }
+
 .optionsActor {
-  width: 200px;
-  height: 100px;
+  display: flex; /* Exibe os botões na mesma linha */
+  justify-content: center; /* Centraliza os botões horizontalmente */
+  margin-top: 10px; /* Espaçamento superior entre as informações e os botões */
 }
+
 .infoActor {
   list-style: none;
+  margin-bottom: 10px; /* Espaçamento inferior entre as informações */
 }
+
 .infoActor li {
-  font-size: 13px;
+  font-size: 14px; /* Aumentei um pouco o tamanho da fonte */
+  margin-bottom: 5px; /* Espaçamento inferior entre os itens da lista */
 }
-.titleActor .titleActor {
-  font-size: 20px;
+
+.titleActor {
+  font-size: 40px;
+  font-weight: bold; /* Adicionei negrito ao título */
+  margin-bottom: 10px; /* Espaçamento inferior entre o título e as outras informações */
+}
+.modal-overlay .btnForm {
+  padding: 10px 20px;
+  margin-top: 1rem;
+  margin-right: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
 }

@@ -59,9 +59,11 @@ function Actors() {
     <div className="actor">
       <div className="AllActors">
         <h1>Todos os Atores de A - Z</h1>
-        <Link className="btnCreate" onClick={openModal}>
-          Adicione um Ator !
-        </Link>
+        <div>
+          <Link className="btnCreate" onClick={openModal}>
+            Adicione um Ator !
+          </Link>
+        </div>
         <div className="firstactors">
           {actors.map((actor) => {
             return (
@@ -72,6 +74,7 @@ function Actors() {
           })}
         </div>
       </div>
+
       {modalOpen && (
         <div className="modal-overlay">
           <div className="modal">
@@ -97,8 +100,10 @@ function Actors() {
                   <option value="CHINA">CHINA</option>
                 </select>
               </div>
-              <button type="submit">Criar</button>
-              <button type="button" onClick={closeModal}>
+              <button className="btnForm" type="submit">
+                Criar
+              </button>
+              <button type="button" className="btnForm" onClick={closeModal}>
                 Cancelar
               </button>
             </form>
