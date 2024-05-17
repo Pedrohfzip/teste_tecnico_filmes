@@ -3,11 +3,16 @@
   margin: 0;
   /* border: 1px solid black; */
 }
+.AllMoviesAZTitle {
+  margin-top: 20px;
+}
 .firstMovies {
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
   width: 100%;
+  gap: 30px;
+  flex-wrap: wrap;
+  wrap: 5px;
+  justify-content: center;
 }
 
 .cardMovies {

@@ -1,7 +1,7 @@
 .cardActor {
   border: 1px solid black;
   width: 200px;
-  height: 200px;
+  height: 80px;
   display: flex;
   flex-direction: column; /* Alterado para coluna para empilhar os elementos verticalmente */
   justify-content: space-between;

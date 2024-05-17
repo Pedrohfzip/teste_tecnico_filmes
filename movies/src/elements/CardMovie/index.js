@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import "./style.css";
 
 function CardMovie({ props }) {
   console.log("Chegou no card movie");
+
   const [modalOpen, setModalOpen] = useState(false);
 
   const openModal = () => {
@@ -13,10 +15,44 @@ function CardMovie({ props }) {
   const closeModal = () => {
     setModalOpen(false);
   };
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Aqui você pode enviar os dados do formulário para o backend para edição
-    // Exemplo: axios.put('/api/movies/' + props.id, formData)
+  const remove = async (event) => {
+    try {
+      const idTemp = props.id;
+      const id = Number(idTemp);
+      console.log(id);
+      const response = await axios.delete(`http://localhost:3000/movie/${id}`);
+
+      event.preventDefault();
+      // console.log(response.data);
+      return response;
+    } catch {}
+  };
+
+  const handleSubmit = async (event) => {
+    try {
+      const idTemp = props.id;
+      const id = Number(idTemp);
+      const title = document.getElementById("title").value;
+      const release_year = document.getElementById("release_year").value;
+      const available = document.getElementById("available").value;
+      const movie = {
+        id: id,
+        title: title,
+        release_year: release_year,
+        available: available,
+      };
+
+      console.log(id);
+      const response = await axios.put(`http://localhost:3000/movie/${id}`, {
+        movie,
+      });
+
+      event.preventDefault();
+      // console.log(response.data);
+      return response; // Substitua localhost e a porta pela URL correta da sua API
+    } catch (error) {
+      console.error("Erro ao buscar filmes:", error);
+    }
   };
 
   return (
@@ -56,27 +92,27 @@ function CardMovie({ props }) {
                 />
               </div>
               <div>
-                <label htmlFor="releaseYear">Ano de Lançamento:</label>
+                <label htmlFor="release_year">Ano de Lançamento:</label>
                 <input
                   type="number"
-                  id="releaseYear"
-                  name="releaseYear"
+                  id="release_year"
+                  name="release_year"
                   defaultValue={props.release_year}
                 />
               </div>
               <div>
                 <label htmlFor="availability">Disponibilidade:</label>
                 <select
-                  id="availability"
-                  name="availability"
+                  id="available"
+                  name="available"
                   defaultValue={props.available ? "Disponível" : "Indisponível"}
                 >
-                  <option value="True">Disponível</option>
-                  <option value="False">Indisponível</option>
+                  <option value={true}>Disponível</option>
+                  <option value={false}>Indisponível</option>
                 </select>
               </div>
               <button type="submit">Editar</button>
-              <button type="submit">Excluir</button>
+              <button onClick={remove}>Excluir</button>
               <button type="button" onClick={closeModal}>
                 Cancelar
               </button>

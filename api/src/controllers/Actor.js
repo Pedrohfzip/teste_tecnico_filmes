@@ -1,7 +1,5 @@
-const { authCreateMovie } = require("../middleware/CreateMovie");
 const database = require("../services/database");
 const HttpStatus = require("http-status-codes");
-const movies = [];
 const create = async (req, res) => {
   const movie = {
     title: req.body.title,
@@ -30,9 +28,7 @@ const create = async (req, res) => {
 };
 const getOne = async (req, res) => {
   try {
-    const data = await database.pool.query(
-      "SELECT * FROM movies WHERE id = 'ID_DO_MOVIE';"
-    );
+    const data = await database.pool.query(`SELECT * FROM actors WHERE id = `);
 
     const arr = data.rows.map((movie) => {
       return movie;
@@ -48,11 +44,11 @@ const getOne = async (req, res) => {
 const getAll = async (req, res) => {
   try {
     const data = await database.pool.query(
-      "SELECT id, title, release_year, available FROM movies "
+      "SELECT id, name, date_birth, nationality FROM actors "
     );
 
-    const arr = data.rows.map((movie) => {
-      return movie;
+    const arr = data.rows.map((actor) => {
+      return actor;
     });
 
     console.log(arr);
@@ -64,15 +60,16 @@ const getAll = async (req, res) => {
 };
 
 const update = async (req, res) => {
-  const { movie } = req.body; // Novos dados do filme
-  console.log(movie);
+  const { actor } = req.body; // Novos dados do filme
+
+  console.log(actor.date_birth);
   try {
     await database.pool.query(
-      `UPDATE movies SET title = $1, release_year = $2, available = $3 WHERE id = $4`,
-      [movie.title, movie.release_year, movie.available, movie.id]
+      `UPDATE actors SET name = $1, date_birth = $2, nationality = $3 WHERE id = $4`,
+      [actor.name, actor.date_birth, actor.nationality, actor.id]
     );
 
-    console.log("Filme atualizado com sucesso.");
+    console.log("Ator atualizado com sucesso.");
     return res.status(200).json({ message: "Filme atualizado com sucesso." });
   } catch (error) {
     console.error("Erro ao atualizar filme:", error);

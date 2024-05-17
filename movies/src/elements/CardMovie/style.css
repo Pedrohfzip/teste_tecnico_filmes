@@ -1,7 +1,8 @@
 .cardMovie {
-  border: 1px solid black;
-  width: 300px;
-  height: 400px;
+  /* border: 1px solid black; */
+  width: 500px;
+  height: 100px;
+  /* border: 1px solid black; */
   display: flex;
   flex-direction: column; /* Alterado para coluna para empilhar os elementos verticalmente */
   justify-content: space-between;
@@ -15,9 +16,17 @@
   bottom: 0px;
   width: 100%;
   height: 90px;
-  border: 1px solid black;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 36%,
+    rgba(68, 20, 50, 1) 53%,
+    rgba(97, 12, 76, 1) 81%,
+    rgba(255, 0, 91, 1) 100%
+  );
+  /* border: 1px solid black; */
   display: flex;
-  justify-conetnt: center;
+  justify-content: space-around;
   align-items: center;
 }
 
@@ -25,6 +34,7 @@
   list-style: none;
 }
 .infoMovielista li {
+  color: white;
   font-size: 13px;
 }
 .infoMovielista .title {
@@ -32,6 +42,20 @@
 }
 .fotoCapa {
   width: 100%;
+}
+.btnVerMais {
+  color: white;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.btnVerMais:hover {
+  color: black;
+  background: white;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 16px;
+  text-decoration: none;
 }
 
 .modal-overlay {
