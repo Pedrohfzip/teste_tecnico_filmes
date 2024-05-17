@@ -18,7 +18,7 @@ function CardActor({ props }) {
       const idTemp = props.id;
       const id = Number(idTemp);
       console.log(id);
-      const response = await axios.delete(`http://localhost:3000/actors/${id}`);
+      const response = await axios.delete(`http://localhost:3001/actors/${id}`);
 
       event.preventDefault();
       // console.log(response.data);
@@ -44,7 +44,7 @@ function CardActor({ props }) {
       };
 
       console.log(actor);
-      const response = await axios.put(`http://localhost:3000/actors/${id}`, {
+      const response = await axios.put(`http://localhost:3001/actors/${id}`, {
         actor,
       });
 

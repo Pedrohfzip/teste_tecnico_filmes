@@ -15,6 +15,7 @@ function Home() {
   const closeModal = () => {
     setModalOpen(false);
   };
+
   const handleSubmit = async (event) => {
     try {
       const title = document.getElementById("title").value;
@@ -26,7 +27,7 @@ function Home() {
         available: available,
       };
 
-      const response = await axios.post(`http://localhost:3000/movie`, {
+      const response = await axios.post(`http://localhost:3001/movie`, {
         movie,
       });
 
@@ -37,11 +38,10 @@ function Home() {
       console.error("Erro ao buscar filmes:", error);
     }
   };
-
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/");
+        const response = await axios.get("http://localhost:3001/");
         setMovies(response.data);
         console.log(response.data);
         return response.data; // Substitua localhost e a porta pela URL correta da sua API

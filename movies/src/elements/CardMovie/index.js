@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "./style.css";
@@ -7,6 +7,14 @@ function CardMovie({ props }) {
   console.log("Chegou no card movie");
 
   const [modalOpen, setModalOpen] = useState(false);
+  const [movieActors, setMovieActors] = useState([]);
+  const [norActor, setnorActor] = useState([]);
+  const [selectedActor, setSelectedActor] = useState(null);
+
+  const handleActorChange = (event) => {
+    const value = event.target.value;
+    setSelectedActor(value === "" ? null : value);
+  };
 
   const openModal = () => {
     setModalOpen(true);
@@ -17,10 +25,13 @@ function CardMovie({ props }) {
   };
   const remove = async (event) => {
     try {
+      const norActor = selectedActor;
       const idTemp = props.id;
       const id = Number(idTemp);
       console.log(id);
-      const response = await axios.delete(`http://localhost:3000/movie/${id}`);
+      const response = await axios.delete(`http://localhost:3001/movie/${id}`, {
+        norActor,
+      });
 
       event.preventDefault();
       // console.log(response.data);
@@ -35,36 +46,81 @@ function CardMovie({ props }) {
       const title = document.getElementById("title").value;
       const release_year = document.getElementById("release_year").value;
       const available = document.getElementById("available").value;
+      const norActor = selectedActor;
+      console.log(norActor);
+
       const movie = {
         id: id,
         title: title,
         release_year: release_year,
         available: available,
+        norActor: norActor,
       };
 
-      console.log(id);
-      const response = await axios.put(`http://localhost:3000/movie/${id}`, {
+      // console.log(id);
+      const response = await axios.put(`http://localhost:3001/movie/${id}`, {
         movie,
       });
 
-      event.preventDefault();
       // console.log(response.data);
+      event.preventDefault();
       return response; // Substitua localhost e a porta pela URL correta da sua API
     } catch (error) {
       console.error("Erro ao buscar filmes:", error);
     }
   };
 
+  useEffect(() => {
+    const fetchMovies = async () => {
+      try {
+        const idTemp = props.id;
+        const id = Number(idTemp);
+        const response = await axios.get(
+          `http://localhost:3001/movie/!actors/${id}`
+        );
+        setnorActor(response.data);
+        console.log(response.data);
+        return response.data; // Substitua localhost e a porta pela URL correta da sua API
+      } catch (error) {
+        console.error("Erro ao buscar filmes:", error);
+      }
+    };
+    fetchMovies();
+  }, []);
+  useEffect(() => {
+    const fetchMovies = async () => {
+      try {
+        const idTemp = props.id;
+        const id = Number(idTemp);
+        const response = await axios.get(
+          `http://localhost:3001/movie/actors/${id}`
+        );
+        setMovieActors(response.data);
+        console.log(response.data);
+        return response.data; // Substitua localhost e a porta pela URL correta da sua API
+      } catch (error) {
+        console.error("Erro ao buscar filmes:", error);
+      }
+    };
+    fetchMovies();
+  }, []);
+
   return (
     <div className="cardMovie">
       <div> </div>
       <div className="infoMovie">
         <ul className="infoMovielista">
-          <li key={props.title} className="title">
+          <li key={props.id} className="title">
             {props.title}
           </li>
           <li>{props.release_year}</li>
           <li>{props.available ? "Disponivel" : "Indisponivel"}</li>
+          <div className="actorsLinked">
+            <li>Atores:</li>
+            {movieActors.map((actor) => {
+              return <li>{actor.name ? actor.name : " "} |</li>;
+            })}
+          </div>
         </ul>
         <ul className="infoMovielista">
           <li>
@@ -111,15 +167,32 @@ function CardMovie({ props }) {
                   <option value={false}>Indisponível</option>
                 </select>
               </div>
-              <button className="btnForm" type="submit">
-                Editar
-              </button>
-              <button className="btnForm" onClick={remove}>
-                Excluir
-              </button>
-              <button className="btnForm" type="button" onClick={closeModal}>
-                Cancelar
-              </button>
+              <div>
+                <label htmlFor="">Atores:</label>
+                <select
+                  id="norActor"
+                  onChange={handleActorChange}
+                  value={selectedActor}
+                >
+                  <option value=" ">Selecione um ator</option>
+                  {norActor.map((actor) => (
+                    <option key={actor.id} value={actor.id}>
+                      {actor.name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <button className="btnForm" type="submit">
+                  Editar
+                </button>
+                <button className="btnForm" onClick={remove}>
+                  Excluir
+                </button>
+                <button className="btnForm" type="button" onClick={closeModal}>
+                  Cancelar
+                </button>
+              </div>
             </form>
           </div>
         </div>

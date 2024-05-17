@@ -78,7 +78,7 @@
   padding: 20px;
   border-radius: 5px;
   width: 20%;
-  height: 30%;
+  height: 50%;
   z-index: 10000; /* Garantir que o modal esteja acima do overlay */
 }
 
@@ -120,4 +120,14 @@ select {
   color: white;
   font-size: 16px;
   cursor: pointer;
+}
+
+.actorsLinked {
+  background: black;
+  width: 100%;
+  flex-wrap: wrap;
+  display: flex;
+}
+.actorsLinked li {
+  padding: 5px 5px;
 }

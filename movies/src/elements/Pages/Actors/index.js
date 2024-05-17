@@ -28,7 +28,7 @@ function Actors() {
       };
 
       console.log(actor);
-      const response = await axios.post(`http://localhost:3000/actors`, {
+      const response = await axios.post(`http://localhost:3001/actors`, {
         actor,
       });
 
@@ -43,7 +43,7 @@ function Actors() {
   useEffect(() => {
     const fetchactors = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/actors");
+        const response = await axios.get("http://localhost:3001/actors");
         setactors(response.data);
         console.log(response.data);
         return response.data; // Substitua localhost e a porta pela URL correta da sua API
