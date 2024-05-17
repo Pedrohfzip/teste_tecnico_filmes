@@ -41,6 +41,7 @@ SIGA TODOS OS PASSOS !
 ```
   - Banco de dados Configurado
     
-  1 ° - Despois de clonar o repositório abra 2 terminais na pasta do projeto 
-  2° - Em um terminal execute " npm run start ", para iniciar o React
+- 1° Despois de clonar o repositório abra 2 terminais na pasta do projeto 
+- 2° Em um terminal execute " npm run start ", para iniciar o React
         Em outro terminal execute "npm run dev" para inicar a API
+- Ira abrir o site no endereço http://localhost:3001/
