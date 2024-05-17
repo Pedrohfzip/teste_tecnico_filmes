@@ -1,9 +1,12 @@
 .home {
   padding: 20px 20px;
+  display: flex;
+  justify-content: center;
   margin: 0;
   /* border: 1px solid black; */
 }
 .AllMoviesAZTitle {
+  width: 90%;
   margin-top: 20px;
 }
 .firstMovies {
@@ -12,7 +15,7 @@
   gap: 30px;
   flex-wrap: wrap;
   wrap: 5px;
-  justify-content: center;
+  justify-content: left;
 }
 
 .cardMovies {

@@ -1,7 +1,12 @@
 .actor {
   padding: 20px 20px;
   margin: 0;
-  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  /* border: 1px solid black; */
+}
+.AllActors {
+  width: 90%;
 }
 .firstactors {
   display: flex;
@@ -63,4 +68,10 @@ select {
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 5px;
+}
+
+.btnCreate {
+  padding: 10px;
+  font-size: 20px;
+  margin-bottom: 5rem;
 }

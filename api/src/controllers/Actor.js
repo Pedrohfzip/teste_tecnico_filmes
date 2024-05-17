@@ -1,23 +1,23 @@
 const database = require("../services/database");
 const HttpStatus = require("http-status-codes");
-const create = async (req, res) => {
-  const movie = {
-    title: req.body.title,
-    release_year: req.body.release_year,
-    available: req.body.available,
-  };
+const authCreateActor = require("../middleware/CreateActor");
 
-  if (authCreateMovie({ movie }) == false) {
-    return res.send(HttpStatus.BAD_REQUEST);
+const create = async (req, res) => {
+  let { actor } = req.body;
+  let date_birth = new Date(actor.date_birth);
+  if (actor.date_birth == null) {
+    return false;
   }
+  console.log(actor);
   try {
     await database.pool
       .query(
-        `INSERT INTO movies (title, release_year, available) VALUES ('${movie.title}', '${movie.release_year}', '${movie.available}')`
+        `INSERT INTO actors (name, date_birth, nationality) VALUES ($1, $2, $3)`,
+        [actor.name, date_birth, actor.nationality]
       )
-      .then((movie) => {
+      .then((actor) => {
         console.log("Adicionado!");
-        return movie;
+        return actor;
       })
       .catch((e) => console.log("erro na inserção" + e));
 
@@ -51,8 +51,6 @@ const getAll = async (req, res) => {
       return actor;
     });
 
-    console.log(arr);
-
     return res.send(arr);
   } catch (error) {
     return res.status(500).json({ error: error.message });
@@ -61,12 +59,14 @@ const getAll = async (req, res) => {
 
 const update = async (req, res) => {
   const { actor } = req.body; // Novos dados do filme
-
+  const date = new Date(actor.date_birth);
+  const name = actor.name;
+  date.toLocaleDateString("pt-BR");
   console.log(actor.date_birth);
   try {
     await database.pool.query(
       `UPDATE actors SET name = $1, date_birth = $2, nationality = $3 WHERE id = $4`,
-      [actor.name, actor.date_birth, actor.nationality, actor.id]
+      [actor.name, date, actor.nationality, actor.id]
     );
 
     console.log("Ator atualizado com sucesso.");
@@ -82,7 +82,7 @@ const remove = async (req, res) => {
   try {
     // Verificar se o filme existe
     const existingMovie = await database.pool.query(
-      "SELECT * FROM movies WHERE id = $1",
+      "SELECT * FROM actors WHERE id = $1",
       [id]
     );
     if (existingMovie.rows.length === 0) {
@@ -90,9 +90,9 @@ const remove = async (req, res) => {
     }
 
     // Executar a query de remoção
-    await database.pool.query("DELETE FROM movies WHERE id = $1", [id]);
+    await database.pool.query("DELETE FROM actors WHERE id = $1", [id]);
 
-    console.log("Filme removido com sucesso.");
+    console.log("Ator removido com sucesso.");
     return res.status(200).json({ message: "Filme removido com sucesso." });
   } catch (error) {
     console.error("Erro ao remover filme:", error);

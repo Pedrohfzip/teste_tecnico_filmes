@@ -12,7 +12,9 @@ router.post("/movie", movieController.create);
 router.put("/movie/:id", movieController.update);
 router.delete("/movie/:id", movieController.remove);
 
+router.post("/actors", actorController.create);
 router.get("/actors", actorController.getAll);
 router.put("/actors/:id", actorController.update);
+router.delete("/actors/:id", actorController.remove);
 
 module.exports = router;

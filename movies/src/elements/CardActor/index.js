@@ -4,6 +4,7 @@ import React, { useState } from "react";
 
 import axios from "axios";
 function CardActor({ props }) {
+  const birth = new Date(props.date_birth);
   const [modalOpen, setModalOpen] = useState(false);
 
   const openModal = () => {
@@ -18,7 +19,7 @@ function CardActor({ props }) {
       const idTemp = props.id;
       const id = Number(idTemp);
       console.log(id);
-      const response = await axios.delete(`http://localhost:3000/movie/${id}`);
+      const response = await axios.delete(`http://localhost:3000/actors/${id}`);
 
       event.preventDefault();
       // console.log(response.data);
@@ -31,10 +32,10 @@ function CardActor({ props }) {
       const idTemp = props.id;
       const id = Number(idTemp);
       const name = document.getElementById("name").value;
-      const date_birth = document.getElementById("date_birth").value;
+      let date_birth = document.getElementById("date_birth").value;
       const nationality = document.getElementById("nationality").value;
       if (date_birth === "") {
-        this.date_birth = props.date_birth;
+        date_birth = new Date(props.date_birth);
       }
       const actor = {
         id: id,
@@ -62,12 +63,13 @@ function CardActor({ props }) {
       <div className="optionsActor">
         <ul className="infoActor">
           <li className="titleActor">{props.name}</li>
+          <li className="titleActor">Nasceu em {props.date_birth}</li>
+
           <li>
             <Link onClick={openModal}>Ver Ator</Link>
           </li>
         </ul>
       </div>
-      ,
       {modalOpen && (
         <div className="modal-overlay">
           <div className="modal">
